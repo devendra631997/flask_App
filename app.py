@@ -34,13 +34,11 @@ def token_required(f):
     return decorated
 
 @app.route('/uploadImage')
-@limiter.limit("5 per minute")
 @token_required
 def image_upload():
     return  render_template('uploadImage.html')
 
-@app.route('/success', methods = ['POST'])
-@limiter.limit("5 per minute")  
+@app.route('/success', methods = ['POST'])  
 @token_required
 def success():  
     if request.method == 'POST':  
